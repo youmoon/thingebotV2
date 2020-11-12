@@ -41,5 +41,9 @@ async def Echo(ctx, *, text: str):
 @bot.command(name="hellothisisverification")
 async def ping(ctx):
     await ctx.send('애브리띵#2227(694017913723682946)')
+    
+@bot.command(name="공지")
+async def ping(ctx):
+    await ctx.send('공지 채널을 설정하려면 채널 이름에 **공지, notice, 띵이봇**중 한가지를 포함하세요!')
 
 bot.run(os.environ['token'])
