@@ -40,6 +40,6 @@ async def Echo(ctx, *, text: str):
 
 @bot.command(name="hellothisisverification")
 async def ping(ctx):
-    await ctx.send('<@694017913723682946>')
+    await ctx.send('애브리띵#2227(694017913723682946)')
 
 bot.run(os.environ['token'])
