@@ -33,4 +33,4 @@ async def on_command_error(ctx, error):
 async def Echo(ctx, *, text: str):
     await ctx.send(text)
 
-client.run(os.environ['token'])
+discord.client.run(os.environ['token'])
