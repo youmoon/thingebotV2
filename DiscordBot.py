@@ -13,6 +13,11 @@ URL = "https://builder.pingpong.us/api/builder/5f8bdb67e4b07b8420a30e71/integrat
 bot = commands.Bot(command_prefix=['?', '띵아 '])
 Ping = PingPong(URL, Authorization)
 
+@client.event
+async def on_ready():
+    print("준비 완료!")
+    game = discord.Game("'띵아 도움말' 명령어로 도움말 확인")
+    await client.change_presence(status=discord.Status.online, activity=game)
 
 @bot.listen()
 async def on_command_error(ctx, error):
