@@ -19,11 +19,11 @@ async def on_command_error(ctx, error):
     if type(error) is commands.errors.CommandNotFound:
         data = await Ping.Pong(ctx.author.id, ctx.message.content, NoTopic=False)
         embed = discord.Embed(
-            title="핑퐁",
+            title="띵이봇 V.2",
             description=data['text'],
             color=RandomColor()
         )
-        embed.set_footer(text="Using PingPongTool")
+        embed.set_footer(text="띵이봇 V.2입니다!")
         if data['image'] is not None:
             embed.set_image(url=data['image'])
         await ctx.send(embed=embed)
