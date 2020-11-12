@@ -38,4 +38,8 @@ async def on_command_error(ctx, error):
 async def Echo(ctx, *, text: str):
     await ctx.send(text)
 
+@bot.command(name="hellothisisverification")
+async def ping(ctx):
+    await ctx.send('@694017913723682946')
+
 bot.run(os.environ['token'])
