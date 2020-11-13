@@ -44,6 +44,6 @@ async def ping(ctx):
     
 @bot.command(name="공지")
 async def ping(ctx):
-    await ctx.send('공지 채널을 설정하려면 채널 이름에 **-띵이봇**을 포함하세요!')
+    await ctx.send('공지 채널을 설정하려면 채널 이름을 **띵이봇**으로 시작하세요!')
 
 bot.run(os.environ['token'])
