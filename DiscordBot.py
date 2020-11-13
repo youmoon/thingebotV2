@@ -45,5 +45,10 @@ async def ping(ctx):
 @bot.command(name="공지")
 async def ping(ctx):
     await ctx.send('공지 채널을 설정하려면 채널 이름을 **0띵이봇**으로 시작하세요!')
+    
+@bot.command(name="초대")
+async def ping(ctx):
+    await ctx.send('봇의 초대코드를 얻으려면 아래 웹사이트로 들어가세요! 공식 깃허브 입니다!')
+    await ctx.send('> https://github.com/OHvrything/thingebotV2')
 
 bot.run(os.environ['token'])
