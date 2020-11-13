@@ -56,5 +56,15 @@ async def ping(ctx):
 async def ping(ctx):
     await ctx.send('깃헙 띵이봇 위키를 참고하세요!')
     await ctx.send('> 띵이봇 위키: https://github.com/OHvrything/thingebotV2/wiki')
+    
+@bot.event
+async def on_member_join(member):
+    ...
+    
+@bot.event
+async def on_message(message):
+    ...
+    
+
 
 bot.run(os.environ['token'])
