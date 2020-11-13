@@ -48,7 +48,13 @@ async def ping(ctx):
     
 @bot.command(name="초대")
 async def ping(ctx):
-    await ctx.send('봇의 초대코드를 얻으려면 아래 웹사이트로 들어가세요! 공식 깃허브 입니다!')
-    await ctx.send('> https://github.com/OHvrything/thingebotV2')
+    await ctx.send('봇의 초대코드 입니다! 도움이 필요하시면 공식 깃헙 이슈 또는 커뮤니티에서 문의 주세요!')
+    await ctx.send('> 띵이봇 초대: https://discord.com/oauth2/authorize?client_id=776239926684811314&scope=bot&permissions=515152&redirect_uri=https%3A%2F%2Fanyf.kro.kr%2Fpages%2Fthanks')
+    await ctx.send('> 띵이봇 위키: https://github.com/OHvrything/thingebotV2/wiki')
+    
+@bot.command(name="도움말")
+async def ping(ctx):
+    await ctx.send('깃헙 띵이봇 위키를 참고하세요!')
+    await ctx.send('> 띵이봇 위키: https://github.com/OHvrything/thingebotV2/wiki')
 
 bot.run(os.environ['token'])
