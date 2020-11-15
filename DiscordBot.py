@@ -37,10 +37,7 @@ async def on_command_error(ctx, error):
 
 @bot.command(name="따라해")
 async def Echo(ctx, *, text: str):
-    embed=discord.Embed(title="따라쟁이 띵이!", color=0xff0000)
-    embed.add_field(name=text, value="", inline=True)
-    embed.set_footer(text="띵이는 따라쟁이!")
-    await ctx.send(embed=embed)
+    await ctx.send(text)
 
 @bot.command(name="hellothisisverification")
 async def ping(ctx):
@@ -48,10 +45,8 @@ async def ping(ctx):
     
 @bot.command(name="공지")
 async def ping(ctx):
-    embed=discord.Embed(title="공지 채널을 설정하려면...", color=0x0033ff)
-    embed.add_field(name="채널 이름을 '0띵이봇'으로 시작하세요!", value="", inline=True)
-    embed.set_footer(text="이렇게 하면 공지를 바-로 받을 수 있어요!")
-    await ctx.send(embed=embed)
+    await ctx.send("공지 채널을 설정하려면... 채널 이름을 **'0띵이봇'**으로 시작하세요!")
+
     
 @bot.command(name="초대")
 async def ping(ctx):
