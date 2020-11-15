@@ -49,7 +49,11 @@ async def ping(ctx):
     
 @bot.command(name="초대")
 async def ping(ctx):
-    await ctx.send('봇의 초대코드 입니다! 도움이 필요하시면 공식 깃헙 이슈 또는 커뮤니티에서 문의 주세요!\n> 띵이봇 위키: https://github.com/OHvrything/thingebotV2/wiki\n> 띵이봇 초대: http://invite.thingebot.kro.kr')
+    embed=discord.Embed(title="띵이봇 초대하기!", color=0x04ff00)
+embed.add_field(name="띵이봇의 초대링크!", value="http://invite.thingebot.kro.kr/", inline=True)
+embed.add_field(name="띵이봇 위키!", value="https://github.com/OHvrything/thingebotV2/wiki", inline=False)
+embed.set_footer(text="띵이봇을 초대하고 함게 놀아요!")
+await ctx.send(embed=embed)
     
 @bot.command(name="도움말")
 async def ping(ctx):
