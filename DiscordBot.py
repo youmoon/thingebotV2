@@ -39,7 +39,7 @@ async def on_command_error(ctx, error):
 async def Echo(ctx, *, text: str):
     embed=discord.Embed(title="따라쟁이 띵이!", color=0xff0000)
     embed.add_field(name=text, value="", inline=True)
-    embed.set_footer(text="이렇게 하면 공지를 바-로 받을 수 있어요!")
+    embed.set_footer(text="띵이는 따라쟁이!")
     await ctx.send(embed=embed)
 
 @bot.command(name="hellothisisverification")
