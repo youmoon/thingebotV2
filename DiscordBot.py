@@ -45,7 +45,10 @@ async def ping(ctx):
     
 @bot.command(name="공지")
 async def ping(ctx):
-    await ctx.send('공지 채널을 설정하려면 채널 이름을 **0띵이봇**으로 시작하세요!')
+    embed=discord.Embed(title="공지 채널을 설정하려면...", color=0x0033ff)
+    embed.add_field(name="채널 이름을 '0띵이봇'으로 시작하세요!", value="", inline=True)
+    embed.set_footer(text="이렇게 하면 공지를 바-로 받을 수 있어요!")
+    await ctx.send(embed=embed)
     
 @bot.command(name="초대")
 async def ping(ctx):
@@ -57,8 +60,10 @@ async def ping(ctx):
     
 @bot.command(name="도움말")
 async def ping(ctx):
-    await ctx.send('깃헙 띵이봇 위키를 참고하세요!')
-    await ctx.send('> 띵이봇 위키: https://github.com/OHvrything/thingebotV2/wiki')
+    embed=discord.Embed(title="띵이봇 위키", description="깃허브에서 제공하는 띵이봇 위키를 살펴보세요!", color=0x04ff00)
+    embed.add_field(name="띵이봇 위키", value="https://github.com/OHvrything/thingebotV2/wiki", inline=True)
+    embed.set_footer(text="띵이봇의 도움말, 초대 등이 있어요!")
+    await ctx.send(embed=embed)
         
 
 bot.run(os.environ['token'])
