@@ -37,7 +37,10 @@ async def on_command_error(ctx, error):
 
 @bot.command(name="따라해")
 async def Echo(ctx, *, text: str):
-    await ctx.send(text)
+    embed=discord.Embed(title="따라쟁이 띵이!", color=0xff0000)
+    embed.add_field(name=text, value="", inline=True)
+    embed.set_footer(text="이렇게 하면 공지를 바-로 받을 수 있어요!")
+    await ctx.send(embed=embed)
 
 @bot.command(name="hellothisisverification")
 async def ping(ctx):
