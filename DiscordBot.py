@@ -8,7 +8,7 @@ import json
 def RandomColor():
     return randint(0, 0xFFFFFF)
 
-Authorization = (os.environ['pingpongtoken'])
+Authorization = "Basic a2V5OmUwNzA4ZDkxNDAwYjEzMDM3ZTZmMjc5OWIwYjNkOTRh"
 URL = "https://builder.pingpong.us/api/builder/5f8bdb67e4b07b8420a30e71/integration/v0.2/custom/{sessionId}"
 
 bot = commands.Bot(command_prefix=['?', '띵아 '])
@@ -45,7 +45,14 @@ async def ping(ctx):
     
 @bot.command(name="공지")
 async def ping(ctx):
-    await ctx.send("공지 채널을 설정하려면... 채널 이름을 **'0띵이봇'**으로 시작하세요!\n또는 띵이봇 공식 포럼에서 **0띵이봇-공지** 채널을 팔로우하세요!\n공식 포럼 링크는 **?도움말** 명령어로 확인 가능합니다!")
+    embed=discord.Embed(title="공지 채널 설정 방법", description="띵이봇의 공지채널 설정 방법이에요!", color=0x0008ff)
+    embed.set_thumbnail(url="https://canary.discord.com/assets/0634b5f01a88a0121bed072779e81bd6.svg")
+    embed.add_field(name="1번", value="공지채널로 설정할 채널 이름을 0**띵이봇**으로 시작하세요!", inline=False)
+    embed.add_field(name="2번", value="띵이봇 공식 포럼에서 **0띵이봇-공지** 채널을 팔로우하세요!", inline=False)
+    embed.add_field(name="1번이 안될때는?", value="띵이봇이 메시지를 보낼 수 있는지 권한을 확인하세요!", inline=True)
+    embed.add_field(name="공식 포럼", value="https://discord.gg/nrsVh8EUHE", inline=True)
+    embed.set_footer(text="띵이봇! 디스코드를 더욱더 즐겁게!")
+    await ctx.send(embed=embed)
 
     
 @bot.command(name="초대")
@@ -65,4 +72,4 @@ async def ping(ctx):
     await ctx.send(embed=embed)
         
 
-bot.run(os.environ['token'])
+bot.run("NzU4ODYyMTY1MDgzMjkxNjY5.X21Hdw.XWyAl0GETl1HLoooxaa9Oe6TcmY")
