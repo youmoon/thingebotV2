@@ -8,7 +8,7 @@ import json
 def RandomColor():
     return randint(0, 0xFFFFFF)
 
-Authorization = "Basic a2V5OmUwNzA4ZDkxNDAwYjEzMDM3ZTZmMjc5OWIwYjNkOTRh"
+Authorization = (os.environ['pingpongtoken'])
 URL = "https://builder.pingpong.us/api/builder/5f8bdb67e4b07b8420a30e71/integration/v0.2/custom/{sessionId}"
 
 bot = commands.Bot(command_prefix=['?', '띵아 '])
