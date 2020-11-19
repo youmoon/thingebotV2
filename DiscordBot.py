@@ -29,7 +29,7 @@ async def on_command_error(ctx, error):
             description=data['text'],
             color=RandomColor()
         )
-        embed.set_footer(text="PingPongTool by Minibox#3332")
+        embed.set_footer(text="띵이봇 입니다!")
         if data['image'] is not None:
             embed.set_image(url=data['image'])
         await ctx.send(embed=embed)
