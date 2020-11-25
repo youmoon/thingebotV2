@@ -17,7 +17,7 @@ Ping = PingPong(URL, Authorization)
 @bot.event
 async def on_ready():
     print("준비 완료!")
-    game = discord.Game("다시 돌아온 띵이봇! '띵아 [할말]' 명령어로 더 인공지능이 된 띵이봇을 만나보세요!")
+    game = discord.Game("'띵아 도움말' 명령어로 띵이봇과 노는법을 알아보세요!")
     await bot.change_presence(status=discord.Status.online, activity=game)
     
 @bot.listen()
