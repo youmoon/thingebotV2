@@ -125,5 +125,10 @@ async def level(ctx, member: discord.Member = None):
             users = json.load(f)
         lvl = users[str(id)]['level']
         await ctx.send(f'{member}님의 레벨입니다!\n현제 래벨 : {lvl}')
+        
+@bot.command()
+async def ping(ctx):
+    latancy = bot.latency
+    await ctx.send("\U0001F4E2"f' Pong! {round(latancy * 1000)}ms') 
 
 bot.run(os.environ['token'])
