@@ -70,62 +70,7 @@ async def ping(ctx):
     embed.add_field(name="공식 포럼", value="https://discord.gg/nrsVh8EUHE", inline=False)
     embed.set_footer(text="띵이봇의 도움말, 초대 등이 있어요!")
     await ctx.send(embed=embed)
-        
-@bot.event
-async def on_message(message):
-    if message.author.bot == False:
-        with open('users.json', 'r') as f:
-            users = json.load(f)
-
-        await update_data(users, message.author)
-        await add_experience(users, message.author, 5)
-        await level_up(users, message.author, message)
-
-        with open('users.json', 'w') as f:
-            json.dump(users, f)
-
-    await bot.process_commands(message)
-
-
-async def update_data(users, user):
-    if not f'{user.id}' in users:
-        users[f'{user.id}'] = {}
-        users[f'{user.id}']['experience'] = 0
-        users[f'{user.id}']['level'] = 0
-
-
-async def add_experience(users, user, exp):
-    users[f'{user.id}']['experience'] += exp
-
-
-async def level_up(users, user, message):
-    with open('levels.json', 'r') as g:
-        levels = json.load(g)
-    experience = users[f'{user.id}']['experience']
-    lvl_start = users[f'{user.id}']['level']
-    lvl_end = int(experience ** (1 / 4))
-    if lvl_start < lvl_end:
-        embed = discord.Embed(title='레밸이 상승되였습니다!', color=0x00FF00,
-                        description=f'{user.mention}님의 래벨이 상승 되였습니다'
-                                    f'\n 현제 레밸: {lvl_end}')
-        await message.channel.send(embed=embed)
-        users[f'{user.id}']['level'] = lvl_end
-
-@bot.command(name="레벨")
-async def level(ctx, member: discord.Member = None):
-    if not member:
-        id = ctx.message.author.id
-        with open('users.json', 'r') as f:
-            users = json.load(f)
-        lvl = users[str(id)]['level']
-        await ctx.send(f'당신의 레벨입니다!\n현제 래벨 : [{lvl}]')
-    else:
-        id = member.id
-        with open('users.json', 'r') as f:
-            users = json.load(f)
-        lvl = users[str(id)]['level']
-        await ctx.send(f'{member}님의 레벨입니다!\n현제 래벨 : {lvl}')
-        
+    
 @bot.command()
 async def ping(ctx):
     latancy = bot.latency
