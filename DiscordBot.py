@@ -102,12 +102,9 @@ async def _unban(ctx, *, user_name):
 
 @bot.listen()
 async def on_command_error(ctx, error):
-    if type(error) is commands.errors.MissingPermissions:
-        await ctx.send("권한이 없습니다 ㅜㅜ")
-    if isinstance(error, commands.MissingRequiredArgument):
-        await ctx.send("필요한 값이 없어요 ㅜㅜ")
-    if isinstance(error, commands.BadArgument):
-        await ctx.send("알맞은 값을 넣어주세요! ㅜㅜ")
+    embed = discord.Embed(title="오류!!", description="오류가 발생했습니다. 혹시 권한이 없는거 아닐까요?", color=0xFF0000)
+    embed.add_field(name="상세", value=f"```{error}```")
+    await ctx.send(embed=embed)
 
 @commands.has_permissions(administrator=True)
 @bot.command(name="지워", pass_context=True)
