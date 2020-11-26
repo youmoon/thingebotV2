@@ -29,7 +29,7 @@ async def on_command_error(ctx, error):
             description=data['text'],
             color=RandomColor()
         )
-        embed.set_footer(text="띵이봇 입니다!")
+        embed.set_footer(text="띵이봇 V.2입니다!")
         if data['image'] is not None:
             embed.set_image(url=data['image'])
         await ctx.send(embed=embed)
@@ -47,7 +47,7 @@ async def ping(ctx):
 async def ping(ctx):
     embed=discord.Embed(title="공지 채널 설정 방법", description="띵이봇의 공지채널 설정 방법이에요!", color=0x0008ff)
     embed.set_thumbnail(url="https://canary.discord.com/assets/0634b5f01a88a0121bed072779e81bd6.svg")
-    embed.add_field(name="1번", value="공지채널로 설정할 채널 이름을 0**띵이봇**으로 시작하세요!", inline=False)
+    embed.add_field(name="1번", value="공지채널로 설정할 채널 이름을 **0띵이봇, 봇-공지, 또는 봇공지**로 시작하세요!", inline=False)
     embed.add_field(name="2번", value="띵이봇 공식 포럼에서 **0띵이봇-공지** 채널을 팔로우하세요!", inline=False)
     embed.add_field(name="1번이 안될때는?", value="띵이봇이 메시지를 보낼 수 있는지 권한을 확인하세요!", inline=True)
     embed.add_field(name="공식 포럼", value="https://discord.gg/nrsVh8EUHE", inline=True)
@@ -70,10 +70,23 @@ async def ping(ctx):
     embed.add_field(name="공식 포럼", value="https://discord.gg/nrsVh8EUHE", inline=False)
     embed.set_footer(text="띵이봇의 도움말, 초대 등이 있어요!")
     await ctx.send(embed=embed)
-    
+
 @bot.command()
 async def ping(ctx):
     latancy = bot.latency
-    await ctx.send("\U0001F4E2"f' Pong! {round(latancy * 1000)}ms') 
+    await ctx.send("\U0001F4E2"f' Pong! {round(latancy * 1000)}ms')
+
+@commands.has_permissions(administrator=True)
+@bot.command() 
+async def kick(ctx, *, args):
+    @bot.command(name="추방", pass_context=True)
+    async def _kick(ctx, *, user_name: discord.Member, reason=None):
+        await user_name.kick(reason=reason)
+        await ctx.send(str(user_name)+"을(를) 추방하였습니다.")
+
+@bot.listen()
+async def on_command_error(ctx, error):
+    if type(error) is commands.errors.MissingPermissions:
+        await ctx.send("권한이 없습니다 ㅜㅜ")
 
 bot.run(os.environ['token'])
