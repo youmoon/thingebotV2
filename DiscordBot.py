@@ -104,5 +104,14 @@ async def _unban(ctx, *, user_name):
 async def on_command_error(ctx, error):
     if type(error) is commands.errors.MissingPermissions:
         await ctx.send("권한이 없습니다 ㅜㅜ")
+    if isinstance(error, commands.MissingRequiredArgument):
+        await ctx.send("필요한 값이 없어요 ㅜㅜ")
+    if isinstance(error, commands.BadArgument):
+        await ctx.send("알맞은 값을 넣어주세요! ㅜㅜ")
+
+@commands.has_permissions(administrator=True)
+@bot.command(name="지워", pass_context=True)
+async def _clear(ctx, *, amount=5):
+    await ctx.channel.purge(limit=amount)
 
 bot.run(os.environ['token'])
