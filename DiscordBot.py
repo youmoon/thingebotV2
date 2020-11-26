@@ -33,6 +33,10 @@ async def on_command_error(ctx, error):
         if data['image'] is not None:
             embed.set_image(url=data['image'])
         await ctx.send(embed=embed)
+    else:
+        embed = discord.Embed(title="오류!!", description="오류가 발생했습니다.", color=0xFF0000)
+        embed.add_field(name="상세", value=f"```{error}```")
+        await ctx.send(embed=embed)
 
 
 @bot.command(name="따라해")
@@ -99,13 +103,7 @@ async def _unban(ctx, *, user_name):
             await ctx.guild.unban(user)
             await ctx.send(f"{user.mention}을(를) 밴 해제했어요!")
             return
-
-@bot.listen()
-async def on_command_error(ctx, error):
-    embed = discord.Embed(title="오류!!", description="오류가 발생했습니다. 혹시 권한이 없는거 아닐까요?", color=0xFF0000)
-    embed.add_field(name="상세", value=f"```{error}```")
-    await ctx.send(embed=embed)
-
+    
 @commands.has_permissions(administrator=True)
 @bot.command(name="지워", pass_context=True)
 async def _clear(ctx, *, amount=5):
