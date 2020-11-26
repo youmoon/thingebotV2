@@ -77,12 +77,28 @@ async def ping(ctx):
     await ctx.send("\U0001F4E2"f' Pong! {round(latancy * 1000)}ms')
 
 @commands.has_permissions(administrator=True)
-@bot.command() 
-async def kick(ctx, *, args):
-    @bot.command(name="추방", pass_context=True)
-    async def _kick(ctx, *, user_name: discord.Member, reason=None):
-        await user_name.kick(reason=reason)
-        await ctx.send(str(user_name)+"을(를) 추방하였습니다.")
+@bot.command(name="kick", pass_context=True)
+async def _kick(ctx, *, user_name: discord.Member, reason=None):
+    await user_name.kick(reason=reason)
+    await ctx.send(str(user_name)+"을(를) 추방하였습니다!")
+
+@commands.has_permissions(administrator=True)
+@bot.command(name="ban", pass_context=True)
+async def _ban(ctx, *, user_name: discord.Member):
+    await user_name.ban()
+    await ctx.send(str(user_name)+"을(를) 이 서버에서 밴해버렸습니다!")
+
+@commands.has_permissions(administrator=True)
+@bot.command(name="unban", pass_context=True)
+async def _unban(ctx, *, user_name):
+    banned_users = await ctx.guild.bans()
+    member_name, member_discriminator = user_name.split('#')
+    for ban_entry in banned_users:
+        user = ban_entry.user
+        if (user.name, user.discriminator) == (member_name, member_discriminator):
+            await ctx.guild.unban(user)
+            await ctx.send(f"{user.mention}을(를) 밴 해제했어요!")
+            return
 
 @bot.listen()
 async def on_command_error(ctx, error):
