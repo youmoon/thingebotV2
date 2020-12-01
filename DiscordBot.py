@@ -109,4 +109,5 @@ async def _unban(ctx, *, user_name):
 async def _clear(ctx, *, amount=5):
     await ctx.channel.purge(limit=amount)
 
+app.remove_command("help")
 bot.run(os.environ['token'])
