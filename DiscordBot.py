@@ -124,7 +124,7 @@ async def ping(ctx):
         text = response.text
         data = json.loads(text)
         await ctx.channel.send(
-            " [ " + data["updateTime"] + " ] \n\n" + 
+            "<:covid:783582454619045910> [ " + data["updateTime"] + " ] <:covid:783582454619045910>\n\n" + 
             "국내 확진자: " + data["TotalCase"] + "(+" + data["TotalCaseBefore"] + ")"+ "\n" + 
             "국내 완치자: " + data["TotalRecovered"] + "(+" + data["TodayRecovered"] + ")"+ "\n" + 
             "국내 사망자: " + data["TotalDeath"] + "(+" + data["TodayDeath"] + ")"+ "\n" + 
