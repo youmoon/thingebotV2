@@ -4,7 +4,6 @@ from PingPongTool import PingPong
 from random import randint
 import os
 import time
-import requests
 import json
 
 korea = "http://api.corona-19.kr/korea?serviceKey="
