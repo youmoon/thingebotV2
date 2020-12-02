@@ -1,6 +1,5 @@
 aiohttp==3.6.2
 discord
 discord.py
-time
 requests
 json
