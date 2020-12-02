@@ -3,7 +3,16 @@ from discord.ext import commands
 from PingPongTool import PingPong
 from random import randint
 import os
+import time
+import requests
 import json
+
+korea = "http://api.corona-19.kr/korea?serviceKey="
+key = "c5aacbfc2e7a2d8fc42d098d36549164c" #API 키(https://api.corona-19.kr/ 에서 무료 발급 가능)
+
+response = requests.get(korea + key)
+text = response.text
+data = json.loads(text)
 
 def RandomColor():
     return randint(0, 0xFFFFFF)
@@ -108,6 +117,20 @@ async def _unban(ctx, *, user_name):
 @bot.command(name="지워", pass_context=True)
 async def _clear(ctx, *, amount=5):
     await ctx.channel.purge(limit=amount)
+    
+@bot.command(name="코로나현황")
+async def ping(ctx):
+        response = requests.get(korea + key)
+        text = response.text
+        data = json.loads(text)
+        await ctx.channel.send(
+            " [ " + data["updateTime"] + " ] \n\n" + 
+            "국내 확진자: " + data["TotalCase"] + "(+" + data["TotalCaseBefore"] + ")"+ "\n" + 
+            "국내 완치자: " + data["TotalRecovered"] + "(+" + data["TodayRecovered"] + ")"+ "\n" + 
+            "국내 사망자: " + data["TotalDeath"] + "(+" + data["TodayDeath"] + ")"+ "\n" + 
+            "국내 치료중: " + data["NowCase"] + "\n\n" +
+            "코로나가 완전히 사라지기를 기원합니다! :D"
+        )
 
 bot.remove_command("help")
 bot.run(os.environ['token'])
