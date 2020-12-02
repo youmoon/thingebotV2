@@ -1,7 +1,6 @@
 aiohttp==3.6.2
 discord
 discord.py
-discord.ext
 random
 os
 time
