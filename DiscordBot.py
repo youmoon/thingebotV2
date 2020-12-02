@@ -8,7 +8,7 @@ import requests
 import json
 
 korea = "http://api.corona-19.kr/korea?serviceKey="
-key = "c5aacbfc2e7a2d8fc42d098d36549164c" #API 키(https://api.corona-19.kr/ 에서 무료 발급 가능)
+key = "(os.environ['covidtoken'])" #API 키(https://api.corona-19.kr/ 에서 무료 발급 가능)
 
 response = requests.get(korea + key)
 text = response.text
