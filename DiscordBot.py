@@ -5,6 +5,7 @@ from random import randint
 import os
 import time
 import json
+import requests
 
 korea = "http://api.corona-19.kr/korea?serviceKey="
 key = "(os.environ['covidtoken'])" #API 키(https://api.corona-19.kr/ 에서 무료 발급 가능)
