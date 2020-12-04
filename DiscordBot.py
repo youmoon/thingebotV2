@@ -129,7 +129,7 @@ async def ping(ctx):
             "국내 완치자: " + data["TotalRecovered"] + "(+" + data["TodayRecovered"] + ")"+ "\n" + 
             "국내 사망자: " + data["TotalDeath"] + "(+" + data["TodayDeath"] + ")"+ "\n" + 
             "국내 치료중: " + data["NowCase"] + "\n\n" +
-            "코로나가 완전히 사라지기를 기원합니다! :D"
+            "코로나!! 우리는 이길수 있습니다!!"
         )
 
 bot.remove_command("help")
